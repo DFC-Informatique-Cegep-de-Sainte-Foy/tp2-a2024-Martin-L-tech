@@ -4,7 +4,7 @@ namespace TP2Tests
 {
     public class TestsGame
     {
-        // PROF : nous testons certaines fonctions avec 5 choix, car il est demandé que vos
+        //PROF : nous testons certaines fonctions avec 5 choix, car il est demandé que vos
         // fonctions soient bonnes en général et non seulement pour le jeu du 31 (lorsque applicable).
         //#region GetScoreFromCardValue
         //[Fact]
