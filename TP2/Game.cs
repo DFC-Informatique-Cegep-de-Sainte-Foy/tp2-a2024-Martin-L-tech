@@ -57,6 +57,16 @@ namespace TP2
         public static void DrawFaces(int[] cardValues, bool[] selectedCards, bool[] availableCards)
         {
             // PROF : À COMPLETER.
+            ModifyAvailableCards(cardValues, selectedCards, availableCards);
+            //Choisit (relance) les cartes que le joueur ne veut pas garder.
+            bool[] newAvailableCards = CopyArrayInNewArray(availableCards);
+            for (int i = 0; i < NUM_CARDS_IN_HAND; i++)
+            {
+                if (!selectedCards[i])
+                {
+                    cardValues[i] = ChooseOneAvailableCard(newAvailableCards);
+                }
+            }
         }
         public static int GetScoreFromCardValue(int cardValue)
         {
@@ -80,7 +90,65 @@ namespace TP2
 
 
 
+        //Modifie le tableau des cartes disponibles en fonctions du tableau des cartes sélectionnées et de 
+        //l'indice respectif de ces dernières.
+        public static void ModifyAvailableCards(int[] cardValues, bool[] selectedCards, bool[] availableCards)
+        {
+            for (int i = 0; i < selectedCards.Length; i++)
+            {
+                if (selectedCards[i])
+                {
+                    availableCards[cardValues[i]] = false;
+                }
+                else
+                {
+                    availableCards[cardValues[i]] = true;
+                }
+            }
+        }
 
+        //Choisit une carte (retourne son indice entre 0 et (NUM_CARDS - 1) parmi les
+        //cartes disponibles et la rend ensuite "temporairement" non disponible
+        //pour d'éventuels autres choix de cartes pour la même relance.
+        public static int ChooseOneAvailableCard(bool[] availableCards)
+        {
+            int nbAvailableCards = ComputeNumberOfAvailableCards(availableCards);
+            Random random = new Random();
+            int cardValue = random.Next(0, nbAvailableCards);
+            int newCardValue = cardValue;
+            for (int i=0; i < cardValue + 1;i++)
+            {
+                if (!(availableCards[i]))
+                {
+                    newCardValue++;
+                }
+            }
+            availableCards[newCardValue] = false;
+            return newCardValue;
+        }
+
+        public static int ComputeNumberOfAvailableCards(bool[] availableCards)
+        {
+            int nbAvailableCards = 0;
+            for(int i = 0;i < availableCards.Length;i++)
+            {
+                if(availableCards[i])
+                {
+                    nbAvailableCards++;
+                }
+            }
+            return nbAvailableCards;
+        }
+
+        public static bool[] CopyArrayInNewArray(bool[] originalArray)
+        {
+            bool[] newArray = new bool[originalArray.Length];
+            for (int i = 0; i < originalArray.Length; i++)
+            {
+                newArray[i] = originalArray[i];
+            }
+            return newArray;
+        }
 
         public static void ShowScore(int[] cardIndexes)
         {
