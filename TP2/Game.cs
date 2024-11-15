@@ -381,6 +381,23 @@ namespace TP2
 
         //*****************************************************************************
 
+        public static bool HasAllFaces(int[] values)
+        {
+            bool isJackPresent = false;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == JACK)
+                {
+                    isJackPresent = true;
+                }
+            }
+            return (isJackPresent && HasSequence(values));
+        }
+
+
+
+        //*****************************************************************************
+
         #endregion // Fin région Fonctions pour GetHandScore
 
         public static void ShowScore(int[] cardIndexes)

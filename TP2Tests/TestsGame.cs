@@ -204,75 +204,75 @@ namespace TP2Tests
         }
         #endregion // HasAllSameCardValues
 
-        //        #region HasAllFaces
-        //        [Fact]
-        //        public void CantFindAllFacesIfNonePresent()
-        //        {
-        //            // Arrange
-        //            // 6, 10, As
-        //            int[] values = { 5, 9, 0 };
+        #region HasAllFaces
+        [Fact]
+        public void CantFindAllFacesIfNonePresent()
+        {
+            // Arrange
+            // 6, 10, As
+            int[] values = { 5, 9, 0 };
 
-        //            // Act
-        //            bool hasAllFaces = Game.HasAllFaces(values);
+            // Act
+            bool hasAllFaces = Game.HasAllFaces(values);
 
-        //            // Assert
-        //            Assert.False(hasAllFaces);
-        //        }
-        //        [Fact]
-        //        public void CantFindAllFacesIfNotOnlyFacesPresent()
-        //        {
-        //            // Arrange
-        //            // Valet, Reine, As
-        //            int[] values = { 10, 11, 0 };
+            // Assert
+            Assert.False(hasAllFaces);
+        }
+        [Fact]
+        public void CantFindAllFacesIfNotOnlyFacesPresent()
+        {
+            // Arrange
+            // Valet, Reine, As
+            int[] values = { 10, 11, 0 };
 
-        //            // Act
-        //            bool hasAllFaces = Game.HasAllFaces(values);
+            // Act
+            bool hasAllFaces = Game.HasAllFaces(values);
 
-        //            // Assert
-        //            Assert.False(hasAllFaces);
-        //        }
-        //        [Fact]
-        //        public void CantFindAllFacesIfMultipleSameFacesPresent()
-        //        {
-        //            // Arrange
-        //            // Valet, Roi, Roi
-        //            int[] values = { 10, 12, 12 };
+            // Assert
+            Assert.False(hasAllFaces);
+        }
+        [Fact]
+        public void CantFindAllFacesIfMultipleSameFacesPresent()
+        {
+            // Arrange
+            // Valet, Roi, Roi
+            int[] values = { 10, 12, 12 };
 
-        //            // Act
-        //            bool hasAllFaces = Game.HasAllFaces(values);
+            // Act
+            bool hasAllFaces = Game.HasAllFaces(values);
 
-        //            // Assert
-        //            Assert.False(hasAllFaces);
-        //        }
-        //        [Fact]
-        //        public void CanFindAllFacesIfPresent()
-        //        {
-        //            // Arrange
-        //            // Valet, Reine, As
-        //            int[] values = { 10, 11, 12 };
+            // Assert
+            Assert.False(hasAllFaces);
+        }
+        [Fact]
+        public void CanFindAllFacesIfPresent()
+        {
+            // Arrange
+            // Valet, Reine, As
+            int[] values = { 10, 11, 12 };
 
-        //            // Act
-        //            bool hasAllFaces = Game.HasAllFaces(values);
+            // Act
+            bool hasAllFaces = Game.HasAllFaces(values);
 
-        //            // Assert
-        //            Assert.True(hasAllFaces);
-        //        }
-        //        [Fact]
-        //        public void CanFindAllFacesIfPresentNotInOrder()
-        //        {
-        //            // Arrange
-        //            // Valet, Reine, As
-        //            int[] values = { 12, 10, 11 };
+            // Assert
+            Assert.True(hasAllFaces);
+        }
+        [Fact]
+        public void CanFindAllFacesIfPresentNotInOrder()
+        {
+            // Arrange
+            // Valet, Reine, As
+            int[] values = { 12, 10, 11 };
 
-        //            // Act
-        //            bool hasAllFaces = Game.HasAllFaces(values);
+            // Act
+            bool hasAllFaces = Game.HasAllFaces(values);
 
-        //            // Assert
-        //            Assert.True(hasAllFaces);
-        //        }
+            // Assert
+            Assert.True(hasAllFaces);
+        }
 
 
-        //        #endregion // HasAllFaces
+        #endregion // HasAllFaces
 
         //        #region HasOnlyFaces
         //        [Fact]
