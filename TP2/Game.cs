@@ -394,6 +394,24 @@ namespace TP2
             return (isJackPresent && HasSequence(values));
         }
 
+        public static bool HasOnlyFaces(int[] values)
+        {
+            bool hasOnlyFaces = false;
+            int count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == JACK) || (values[i] == QUEEN) || (values[i] == KING))
+                {
+                    count++;
+                }
+            }
+            if (count == values.Length)
+            {
+                hasOnlyFaces = true;
+            }
+            return hasOnlyFaces;
+        }
+
 
 
         //*****************************************************************************

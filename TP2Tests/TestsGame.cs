@@ -274,77 +274,77 @@ namespace TP2Tests
 
         #endregion // HasAllFaces
 
-        //        #region HasOnlyFaces
-        //        [Fact]
-        //        public void CantFindOnlyFacesIfNonePresent()
-        //        {
-        //            // Arrange
-        //            // 4, 5, 6, 7, 8
-        //            int[] values = { 3, 4, 5, 6, 7 };
+        #region HasOnlyFaces
+        [Fact]
+        public void CantFindOnlyFacesIfNonePresent()
+        {
+            // Arrange
+            // 4, 5, 6, 7, 8
+            int[] values = { 3, 4, 5, 6, 7 };
 
-        //            // Act
-        //            bool hasOnlyFaces = Game.HasOnlyFaces(values);
+            // Act
+            bool hasOnlyFaces = Game.HasOnlyFaces(values);
 
-        //            // Assert
-        //            Assert.False(hasOnlyFaces);
-        //        }
+            // Assert
+            Assert.False(hasOnlyFaces);
+        }
 
-        //        [Fact]
-        //        public void CantFindOnlyFacesIfNotOnlyFacesPresent()
-        //        {
-        //            // Arrange
-        //            // 4, 5, 6, Valet, Roi
-        //            int[] values = { 3, 4, 5, 10, 12 };
+        [Fact]
+        public void CantFindOnlyFacesIfNotOnlyFacesPresent()
+        {
+            // Arrange
+            // 4, 5, 6, Valet, Roi
+            int[] values = { 3, 4, 5, 10, 12 };
 
-        //            // Act
-        //            bool hasOnlyFaces = Game.HasOnlyFaces(values);
+            // Act
+            bool hasOnlyFaces = Game.HasOnlyFaces(values);
 
-        //            // Assert
-        //            Assert.False(hasOnlyFaces);
-        //        }
+            // Assert
+            Assert.False(hasOnlyFaces);
+        }
 
-        //        [Fact]
-        //        public void CanFindOnlyFacesIfPresent()
-        //        {
-        //            // Arrange
-        //            // Reine, Valet, Roi, Valet, Roi
-        //            int[] values = { 11, 10, 11, 10, 12 };
+        [Fact]
+        public void CanFindOnlyFacesIfPresent()
+        {
+            // Arrange
+            // Reine, Valet, Roi, Valet, Roi
+            int[] values = { 11, 10, 11, 10, 12 };
 
-        //            // Act
-        //            bool hasOnlyFaces = Game.HasOnlyFaces(values);
+            // Act
+            bool hasOnlyFaces = Game.HasOnlyFaces(values);
 
-        //            // Assert
-        //            Assert.True(hasOnlyFaces);
-        //        }
+            // Assert
+            Assert.True(hasOnlyFaces);
+        }
 
-        //        [Fact]
-        //        public void CanFindOnlyFacesIfAllSameFace()
-        //        {
-        //            // Arrange
-        //            // Valet, Valet, Valet, Valet, Valet
-        //            int[] values = { 10, 10, 10, 10, 10 };
+        [Fact]
+        public void CanFindOnlyFacesIfAllSameFace()
+        {
+            // Arrange
+            // Valet, Valet, Valet, Valet, Valet
+            int[] values = { 10, 10, 10, 10, 10 };
 
-        //            // Act
-        //            bool hasOnlyFaces = Game.HasOnlyFaces(values);
+            // Act
+            bool hasOnlyFaces = Game.HasOnlyFaces(values);
 
-        //            // Assert
-        //            Assert.True(hasOnlyFaces);
-        //        }
+            // Assert
+            Assert.True(hasOnlyFaces);
+        }
 
-        //        [Fact]
-        //        public void CanFindOnlyFacesIfAllFacesPresent()
-        //        {
-        //            // Arrange
-        //            // Reine, Valet, Roi
-        //            int[] values = { 12, 10, 11, };
+        [Fact]
+        public void CanFindOnlyFacesIfAllFacesPresent()
+        {
+            // Arrange
+            // Reine, Valet, Roi
+            int[] values = { 12, 10, 11, };
 
-        //            // Act
-        //            bool hasOnlyFaces = Game.HasOnlyFaces(values);
+            // Act
+            bool hasOnlyFaces = Game.HasOnlyFaces(values);
 
-        //            // Assert
-        //            Assert.True(hasOnlyFaces);
-        //        }
-        //        #endregion // HasOnlyFaces
+            // Assert
+            Assert.True(hasOnlyFaces);
+        }
+        #endregion // HasOnlyFaces
 
         //        #region HasSameColorSequence
         //        [Fact]
