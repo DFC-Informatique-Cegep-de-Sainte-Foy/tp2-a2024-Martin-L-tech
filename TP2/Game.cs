@@ -417,6 +417,18 @@ namespace TP2
             return (HasSequence(values) && HasOnlySameColorCards(suits));
         }
 
+        public static int GetScoreFromMultipleCardsOfASuit(int suit, int[] values, int[] suits)
+        {
+            int score = 0;
+            for (int i = 0; i < suits.Length; i++)
+            {
+                if (suits[i] == suit)
+                {
+                    score = score + GetScoreFromCardValue(values[i]);
+                }
+            }
+            return score;
+        }
 
         //*****************************************************************************
 

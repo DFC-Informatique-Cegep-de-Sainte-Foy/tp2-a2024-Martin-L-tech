@@ -492,79 +492,79 @@ namespace TP2Tests
         }
         #endregion // HasSequence
 
-        //        #region GetScoreFromMultipleCardsOfASuit
-        //        [Fact]
-        //        public void ShouldGet0WhenTargetSuitNotInSuits()
-        //        {
-        //            // Arrange
-        //            const int EXPECTED = 0;
-        //            // Coeur
-        //            int suit = 0;
-        //            // 4, Valet, As
-        //            int[] values = { 3, 10, 0 };
-        //            // Diamant, Diamant, Diamant
-        //            int[] suits = { 1, 1, 1 };
+        #region GetScoreFromMultipleCardsOfASuit
+        [Fact]
+        public void ShouldGet0WhenTargetSuitNotInSuits()
+        {
+            // Arrange
+            const int EXPECTED = 0;
+            // Coeur
+            int suit = 0;
+            // 4, Valet, As
+            int[] values = { 3, 10, 0 };
+            // Diamant, Diamant, Diamant
+            int[] suits = { 1, 1, 1 };
 
-        //            // Act
-        //            int score = Game.GetScoreFromMultipleCardsOfASuit(suit, values, suits);
+            // Act
+            int score = Game.GetScoreFromMultipleCardsOfASuit(suit, values, suits);
 
-        //            // Assert
-        //            Assert.Equal(EXPECTED, score);
-        //        }
-        //        [Fact]
-        //        public void ShouldGetRightScoreWithOneCardFromTargetSuit()
-        //        {
-        //            // Arrange
-        //            const int EXPECTED = 4;
-        //            // Coeur
-        //            int suit = 0;
-        //            // 4, Valet, As
-        //            int[] values = { 3, 10, 0 };
-        //            // Coeur, Diamant, Diamant
-        //            int[] suits = { 0, 1, 1 };
+            // Assert
+            Assert.Equal(EXPECTED, score);
+        }
+        [Fact]
+        public void ShouldGetRightScoreWithOneCardFromTargetSuit()
+        {
+            // Arrange
+            const int EXPECTED = 4;
+            // Coeur
+            int suit = 0;
+            // 4, Valet, As
+            int[] values = { 3, 10, 0 };
+            // Coeur, Diamant, Diamant
+            int[] suits = { 0, 1, 1 };
 
-        //            // Act
-        //            int score = Game.GetScoreFromMultipleCardsOfASuit(suit, values, suits);
+            // Act
+            int score = Game.GetScoreFromMultipleCardsOfASuit(suit, values, suits);
 
-        //            // Assert
-        //            Assert.Equal(EXPECTED, score);
-        //        }
-        //        [Fact]
-        //        public void ShouldGetRightScoreWithMultipleCardsFromTargetSuit()
-        //        {
-        //            // Arrange
-        //            const int EXPECTED = 14;
-        //            // Coeur
-        //            int suit = 0;
-        //            // 4, Valet, As, Reine, 6
-        //            int[] values = { 3, 10, 0, 11, 5 };
-        //            // Coeur, Diamant, Diamant, Coeur, Pique
-        //            int[] suits = { 0, 1, 1, 0, 2 };
+            // Assert
+            Assert.Equal(EXPECTED, score);
+        }
+        [Fact]
+        public void ShouldGetRightScoreWithMultipleCardsFromTargetSuit()
+        {
+            // Arrange
+            const int EXPECTED = 14;
+            // Coeur
+            int suit = 0;
+            // 4, Valet, As, Reine, 6
+            int[] values = { 3, 10, 0, 11, 5 };
+            // Coeur, Diamant, Diamant, Coeur, Pique
+            int[] suits = { 0, 1, 1, 0, 2 };
 
-        //            // Act
-        //            int score = Game.GetScoreFromMultipleCardsOfASuit(suit, values, suits);
+            // Act
+            int score = Game.GetScoreFromMultipleCardsOfASuit(suit, values, suits);
 
-        //            // Assert
-        //            Assert.Equal(EXPECTED, score);
-        //        }
-        //        [Fact]
-        //        public void ShouldGetMaxScoreWithRightCombinationFromTargetSuit()
-        //        {
-        //            // Arrange
-        //            // Trèfle
-        //            int suit = 3;
-        //            // Roi, Valet, As
-        //            int[] values = { 12, 10, 0, };
-        //            // Trèfle, Trèfle, Trèfle
-        //            int[] suits = { 3, 3, 3 };
+            // Assert
+            Assert.Equal(EXPECTED, score);
+        }
+        [Fact]
+        public void ShouldGetMaxScoreWithRightCombinationFromTargetSuit()
+        {
+            // Arrange
+            // Trèfle
+            int suit = 3;
+            // Roi, Valet, As
+            int[] values = { 12, 10, 0, };
+            // Trèfle, Trèfle, Trèfle
+            int[] suits = { 3, 3, 3 };
 
-        //            // Act
-        //            int score = Game.GetScoreFromMultipleCardsOfASuit(suit, values, suits);
+            // Act
+            int score = Game.GetScoreFromMultipleCardsOfASuit(suit, values, suits);
 
-        //            // Assert
-        //            Assert.Equal(Game.MAX_SCORE, score);
-        //        }
-        //        #endregion // GetScoreFromMultipleCardsOfASuit
+            // Assert
+            Assert.Equal(Game.MAX_SCORE, score);
+        }
+        #endregion // GetScoreFromMultipleCardsOfASuit
 
         //        #region GetHandScore
         //        [Fact]
