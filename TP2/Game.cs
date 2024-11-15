@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace TP2
 {
@@ -71,15 +72,70 @@ namespace TP2
         public static int GetScoreFromCardValue(int cardValue)
         {
             // PROF : À COMPLETER. Le code ci-après est incorrect
-            return 0;
+            int scoreOfCard = 0;
+            switch (cardValue)
+            {
+                case ACE:
+                    scoreOfCard = ACES_SCORE;
+                    break;
+                case TWO:
+                    scoreOfCard = 2;
+                    break;
+                case THREE:
+                    scoreOfCard = 3;
+                    break;
+                case FOUR:
+                    scoreOfCard = 4;
+                    break;
+                case FIVE:
+                    scoreOfCard = 5;
+                    break;
+                case SIX:
+                    scoreOfCard = 6;
+                    break;
+                case SEVEN:
+                    scoreOfCard = 7;
+                    break;
+                case EIGHT:
+                    scoreOfCard = 8;
+                    break;
+                case NINE:
+                    scoreOfCard = 9;
+                    break;
+                case TEN:
+                    scoreOfCard = 10;
+                    break;
+                case JACK:
+                    scoreOfCard = FACES_SCORE;
+                    break;
+                case QUEEN:
+                    scoreOfCard = FACES_SCORE;
+                    break;
+                case KING:
+                    scoreOfCard = FACES_SCORE;
+                    break;
+            }
+            return scoreOfCard;
         }
 
         public static int GetHandScore(int[] cardIndexes)
         {
             // PROF : À COMPLETER. Le code ci-après est incorrect
-            return 0;
+            int handScore = 0;
+            int[] cardSuits = new int[cardIndexes.Length];
+            int[] cardValues = new int[cardIndexes.Length];
+            int[] cardScores = new int[cardIndexes.Length];
+            for (int i = 0;i < cardIndexes.Length; ++i)
+            {
+                cardSuits[i] = GetSuitFromCardIndex(cardIndexes[i]);
+                cardValues[i] = GetValueFromCardIndex(cardIndexes[i]);
+                cardScores[i] = GetScoreFromCardValue(cardIndexes[i]);
+            }
+
+            return handScore;
         }
 
+        //******************************************************************************************************
         // A COMPLETER
         // ...
         // Il manque toutes les méthodes pour trouver les différentes combinaisons.
@@ -88,7 +144,7 @@ namespace TP2
         // (qui est exactement comme le vôtre, mais vous ne pourrez pas me faire parvenir un fichier
         // de tests avec vos noms de fonctions).
 
-
+        #region Fonctions pour DrawFaces
 
         //Modifie le tableau des cartes disponibles en fonctions du tableau des cartes sélectionnées et de 
         //l'indice respectif de ces dernières.
@@ -149,6 +205,183 @@ namespace TP2
             }
             return newArray;
         }
+
+        #endregion // Fin région Fonctions pour DrawFaces
+
+        #region Fonctions pour GetHandScore
+
+        public static int GetHighestCardValue(int[] values)
+        {
+            int highestCardValue = 0;
+            for (int i = 0;i < values.Length; i++)
+            {
+                if (values[i] == ACE)
+                {
+                    highestCardValue = ACE;
+                    return highestCardValue;
+                }
+                if (values[i] > highestCardValue)
+                {
+                    highestCardValue = values[i];
+                }
+            }
+            return highestCardValue;
+        }
+
+        //**************************************************************************
+
+        public static bool HasOnlySameColorCards(int[] suits)
+        {
+            bool hasOnlySameColorCards = false;
+            if(VerifyIfNonExistingSuitPresent(suits))
+            {
+                return false;
+            }
+            int[] suitsCount = GetArrayOfSuitsCount(suits);
+            if ((suitsCount[HEART] == 0) && (suitsCount[DIAMOND] == 0))
+            {
+                hasOnlySameColorCards = true;
+            }
+            if ((suitsCount[SPADE] == 0) && (suitsCount[CLUB] == 0))
+            {
+                hasOnlySameColorCards = true;
+            }
+            return hasOnlySameColorCards;
+        }
+
+        // Les trois (3) fonctions qui suivent servent pour la fonction
+        // HasOnlySameColorCards.
+
+        public static int ComputeNumberOfCardsInSuit(int[] suits, int suit)
+        {
+            int nbCardsInSuit = 0;
+            for (int i = 0; i < suits.Length; i++)
+            {
+                if (suits[i] == suit)
+                    nbCardsInSuit++;
+            }
+        return nbCardsInSuit;
+        }
+
+        public static int[] GetArrayOfSuitsCount(int[] suits)
+        {
+            int[] suitsCount = new int[NUM_SUITS];
+            suitsCount[HEART] = ComputeNumberOfCardsInSuit(suits, HEART);
+            suitsCount[DIAMOND] = ComputeNumberOfCardsInSuit(suits, DIAMOND);
+            suitsCount[SPADE] = ComputeNumberOfCardsInSuit(suits, SPADE);
+            suitsCount[CLUB] = ComputeNumberOfCardsInSuit(suits, CLUB);
+            return suitsCount;
+        }
+
+        public static bool VerifyIfNonExistingSuitPresent(int[] suits)
+        {
+            bool isNonExistingSuitPresent = false;
+            for (int i = 0;i < suits.Length; ++i)
+            {
+                if (suits[i] > CLUB)
+                {
+                    return true;
+                }
+            }
+            return isNonExistingSuitPresent;
+        }
+
+        //*****************************************************************************
+
+        public static bool HasAllSameCardValues(int[] values)
+        {
+            bool hasAllSameCardValues = false;
+            int count = 0;
+            for (int i = 1; i < values.Length; ++i)
+            {
+                if (values[i] == values[0])
+                {
+                    count++;
+                }
+            }
+            if (count == (values.Length - 1))
+            {
+                hasAllSameCardValues = true;
+            }
+            return hasAllSameCardValues;
+        }
+
+        //**********************************************************************
+
+        public static bool HasSequence(int[] values)
+        {
+            bool hasSequence = false;
+            //On crée un nouveau tableau plutôt que de modifier le tableau
+            //initial en utilisant une fonction de copie similaire à celle que j'avais  
+            //créée pour la fonction DrawFaces mais qui diffère pour le type de tableau 
+            //traité (int[] plutôt que bool[]). Cela nous permet d'éviter que l'on mélange  
+            //les cartes, ce qui pourrait avoir des conséquences désagréables dans le jeu  
+            //(si on modifie le tableau initial, une carte sélectionnée risque peut-être  
+            //de ne plus l'être à cause du tri (permutation des cartes) et vice-versa...). 
+            //Bref, on ne prend pas de risque.
+            int[] copyOfValues = CopyArrayInNewArrayOfInt(values);
+            SortWithBubbleSort(copyOfValues);
+            int lowestValue = copyOfValues[0];
+            int count = 1;
+            for (int i = 1;i < copyOfValues.Length;++i)
+            {
+                if(copyOfValues[i] == lowestValue + i)
+                {
+                    count++;
+                }
+            }
+            if (count == (copyOfValues.Length))
+            {
+                hasSequence = true;
+            }
+
+            return hasSequence;
+        }
+
+        //Les deux (2) fonctions suivantes servent pour la fonction HasSequence
+
+        //Voici le code de la fonction que j'avais codée à l'exercice 20. J'ai
+        //modifié son nom pour qu'il commence par un verbe et je l'utilise parce qu'elle
+        //a passé les tests de l'exercice 20. J'ai laissé la précondition même si elle
+        // n'est pas nécessaire pour ce travail.
+        public static void SortWithBubbleSort(int[] numbers)
+        {
+            if (numbers is null)
+            {
+                throw new ArgumentException("Array can't be null");
+            }
+            int count = 0;
+            do
+            {
+                count = 0;
+                for (int i = 0; i < numbers.Length - 1; i++)
+                {
+                    if (numbers[i] > numbers[i + 1])
+                    {
+                        int max = numbers[i];
+                        numbers[i] = numbers[i + 1];
+                        numbers[i + 1] = max;
+                        count++;
+                    }
+                }
+
+            }
+            while (count > 0);
+        }
+
+        public static int[] CopyArrayInNewArrayOfInt(int[] originalArray)
+        {
+            int[] newArray = new int[originalArray.Length];
+            for (int i = 0; i < originalArray.Length; i++)
+            {
+                newArray[i] = originalArray[i];
+            }
+            return newArray;
+        }
+
+        //*****************************************************************************
+
+        #endregion // Fin région Fonctions pour GetHandScore
 
         public static void ShowScore(int[] cardIndexes)
         {
