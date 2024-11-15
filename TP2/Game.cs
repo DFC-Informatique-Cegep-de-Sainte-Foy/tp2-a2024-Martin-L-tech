@@ -412,6 +412,10 @@ namespace TP2
             return hasOnlyFaces;
         }
 
+        public static bool HasSameColorSequence(int[] values, int[] suits)
+        {
+            return (HasSequence(values) && HasOnlySameColorCards(suits));
+        }
 
 
         //*****************************************************************************

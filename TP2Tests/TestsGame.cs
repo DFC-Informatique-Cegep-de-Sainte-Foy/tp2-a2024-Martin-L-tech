@@ -346,70 +346,70 @@ namespace TP2Tests
         }
         #endregion // HasOnlyFaces
 
-        //        #region HasSameColorSequence
-        //        [Fact]
-        //        public void CantFindSameColorSequenceIfNonePresent()
-        //        {
-        //            // Arrange
-        //            // 4, 7, 2, Valet, Roi
-        //            int[] values = { 3, 6, 1, 10, 12 };
-        //            // Coeur, Diamant, Pique, Trèfle, Coeur
-        //            int[] suits = { 0, 1, 2, 3, 0 };
+        #region HasSameColorSequence
+        [Fact]
+        public void CantFindSameColorSequenceIfNonePresent()
+        {
+            // Arrange
+            // 4, 7, 2, Valet, Roi
+            int[] values = { 3, 6, 1, 10, 12 };
+            // Coeur, Diamant, Pique, Trèfle, Coeur
+            int[] suits = { 0, 1, 2, 3, 0 };
 
-        //            // Act
-        //            bool hasSameColorSequence = Game.HasSameColorSequence(values, suits);
+            // Act
+            bool hasSameColorSequence = Game.HasSameColorSequence(values, suits);
 
-        //            // Assert
-        //            Assert.False(hasSameColorSequence);
-        //        }
+            // Assert
+            Assert.False(hasSameColorSequence);
+        }
 
-        //        [Fact]
-        //        public void CantFindSameColorSequenceIfOnlySequencePresent()
-        //        {
-        //            // Arrange
-        //            // 4, 7, 5, 6, 8 (4, 5, 6, 7, 8)
-        //            int[] values = { 3, 6, 4, 5, 7 };
-        //            // Coeur, Diamant, Pique, Trèfle, Coeur
-        //            int[] suits = { 0, 1, 2, 3, 0 };
+        [Fact]
+        public void CantFindSameColorSequenceIfOnlySequencePresent()
+        {
+            // Arrange
+            // 4, 7, 5, 6, 8 (4, 5, 6, 7, 8)
+            int[] values = { 3, 6, 4, 5, 7 };
+            // Coeur, Diamant, Pique, Trèfle, Coeur
+            int[] suits = { 0, 1, 2, 3, 0 };
 
-        //            // Act
-        //            bool hasSameColorSequence = Game.HasSameColorSequence(values, suits);
+            // Act
+            bool hasSameColorSequence = Game.HasSameColorSequence(values, suits);
 
-        //            // Assert
-        //            Assert.False(hasSameColorSequence);
-        //        }
+            // Assert
+            Assert.False(hasSameColorSequence);
+        }
 
-        //        [Fact]
-        //        public void CantFindSameColorSequenceIfOnlySameColorPresent()
-        //        {
-        //            // Arrange
-        //            // 4, 7, 2, Valet, Roi
-        //            int[] values = { 3, 6, 1, 10, 12 };
-        //            // Coeur, Diamant, Diamant, Diamant, Coeur
-        //            int[] suits = { 0, 1, 1, 1, 0 };
+        [Fact]
+        public void CantFindSameColorSequenceIfOnlySameColorPresent()
+        {
+            // Arrange
+            // 4, 7, 2, Valet, Roi
+            int[] values = { 3, 6, 1, 10, 12 };
+            // Coeur, Diamant, Diamant, Diamant, Coeur
+            int[] suits = { 0, 1, 1, 1, 0 };
 
-        //            // Act
-        //            bool hasSameColorSequence = Game.HasSameColorSequence(values, suits);
+            // Act
+            bool hasSameColorSequence = Game.HasSameColorSequence(values, suits);
 
-        //            // Assert
-        //            Assert.False(hasSameColorSequence);
-        //        }
-        //        [Fact]
-        //        public void CanFindSameColorSequenceIfPresent()
-        //        {
-        //            // Arrange
-        //            // 4, As, 5, 3, 2 (As, 2, 3, 4, 5)
-        //            int[] values = { 3, 0, 4, 2, 1 };
-        //            // Coeur, Diamant, Diamant, Diamant, Coeur
-        //            int[] suits = { 0, 1, 1, 1, 0 };
+            // Assert
+            Assert.False(hasSameColorSequence);
+        }
+        [Fact]
+        public void CanFindSameColorSequenceIfPresent()
+        {
+            // Arrange
+            // 4, As, 5, 3, 2 (As, 2, 3, 4, 5)
+            int[] values = { 3, 0, 4, 2, 1 };
+            // Coeur, Diamant, Diamant, Diamant, Coeur
+            int[] suits = { 0, 1, 1, 1, 0 };
 
-        //            // Act
-        //            bool hasSameColorSequence = Game.HasSameColorSequence(values, suits);
+            // Act
+            bool hasSameColorSequence = Game.HasSameColorSequence(values, suits);
 
-        //            // Assert
-        //            Assert.True(hasSameColorSequence);
-        //        }
-        //        #endregion // HasSameColorSequence
+            // Assert
+            Assert.True(hasSameColorSequence);
+        }
+        #endregion // HasSameColorSequence
 
         #region HasSequence
         [Fact]
