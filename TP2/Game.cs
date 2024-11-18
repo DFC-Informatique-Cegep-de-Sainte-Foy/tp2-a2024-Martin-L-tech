@@ -124,14 +124,41 @@ namespace TP2
             int handScore = 0;
             int[] cardSuits = new int[cardIndexes.Length];
             int[] cardValues = new int[cardIndexes.Length];
-            int[] cardScores = new int[cardIndexes.Length];
             for (int i = 0;i < cardIndexes.Length; ++i)
             {
                 cardSuits[i] = GetSuitFromCardIndex(cardIndexes[i]);
                 cardValues[i] = GetValueFromCardIndex(cardIndexes[i]);
-                cardScores[i] = GetScoreFromCardValue(cardIndexes[i]);
             }
-
+            int scoreSuit = GetScoreFromMostRepresentedSuit(cardValues, cardSuits);
+            handScore = GetScoreFromCardValue(GetHighestCardValue(cardValues));
+            if (HasOnlySameColorCards(cardSuits))
+            {
+                handScore = SAME_COLOR_SCORE;
+            }
+            if (HasSequence(cardValues))
+            {
+                handScore = SEQUENCE_SCORE;
+            }
+            if (HasOnlyFaces(cardValues))
+            {
+                handScore = ONLY_FACES_SCORE;
+            }
+            if (HasSameColorSequence(cardValues, cardSuits))
+            {
+                handScore = SAME_COLOR_SEQUENCE_SCORE;
+            }
+            if (HasAllSameCardValues(cardValues))
+            {
+                handScore = ALL_SAME_CARDS_VALUE_SCORE;
+            }
+            if (HasAllFaces(cardValues))
+            {
+                handScore = ALL_FACES_SCORE;
+            }
+            if (scoreSuit > handScore)
+            {
+                handScore = scoreSuit;
+            }
             return handScore;
         }
 
@@ -430,7 +457,43 @@ namespace TP2
             return score;
         }
 
-        //*****************************************************************************
+        //La fonction suivante calcule le score de la 'suit' la plus représentée 
+        //(addition du score de chaque carte de cette 'suit'). S'il y a trois 'suits'
+        //différentes dans la main, la fonction retournera le score le plus élevé des
+        //trois cartes de la main.
+        public static int GetScoreFromMostRepresentedSuit(int[] values, int[] suits)
+        {
+            int[] suitsCount = GetArrayOfSuitsCount(suits);
+            int max = 0;
+            for(int i = 0;i < suitsCount.Length;i++)
+            {
+                if (suitsCount[i] > max)
+                {
+                    max = suitsCount[i];
+                }
+            }
+            if (max == 1)
+            {
+                int maxScore = 0;
+                for (int i = 0; i < values.Length; i++)
+                {
+                    if (GetScoreFromCardValue(values[i]) > maxScore)
+                    {
+                        maxScore = GetScoreFromCardValue(values[i]);
+                    }
+                }
+                return maxScore;
+            }
+            int scoreSuit = 0;
+            for (int suit = 0; suit < suitsCount.Length; suit++)
+            {
+                if (suitsCount[suit] == max)
+                {
+                    scoreSuit = GetScoreFromMultipleCardsOfASuit(suit, values, suits);
+                }
+            }
+            return scoreSuit;
+        }
 
         #endregion // Fin région Fonctions pour GetHandScore
 
